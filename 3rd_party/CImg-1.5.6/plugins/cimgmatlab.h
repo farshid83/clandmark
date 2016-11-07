@@ -199,9 +199,8 @@ CImg(const mxArray *matlabArray, const bool vdata = false)
  * don't know if it is of any use...
  */
 CImg & operator=(const mxArray *matlabArray) {
-  int
-    nbdims = (int)mxGetNumberOfDimensions(matlabArray),
-    classID = mxGetClassID(matlabArray);
+  int nbdims = (int)mxGetNumberOfDimensions(matlabArray);
+  mxClassID classID = mxGetClassID(matlabArray);
   if (nbdims>4 || !isNumericalClassID(classID)) {
     delete [] _data; _data = 0;
     _width = _height = _depth = _spectrum = 0;
